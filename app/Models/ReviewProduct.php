@@ -23,6 +23,10 @@ class ReviewProduct extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'rate' => 'integer'
+    ];
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
