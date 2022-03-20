@@ -48,6 +48,9 @@ class ProductController extends Controller
      */
     public function show(Product $product): JsonResponse
     {
+        $product->photo = asset($product->photo);
+        $product->photo_2 = asset($product->photo_2);
+
         return response()->json($product);
     }
 
