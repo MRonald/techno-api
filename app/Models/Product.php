@@ -28,6 +28,11 @@ class Product extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'price' => 'float',
+        'stock' => 'integer',
+    ];
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
