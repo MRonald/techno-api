@@ -15,7 +15,14 @@ class ProductController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(Product::with('reviews')->get());
+        $products = Product::with('reviews')->get()->each(
+            function (Product $product) {
+                $product->photo = asset($product->photo);
+                $product->photo_2 = asset($product->photo_2);
+            }
+        );
+
+        return response()->json($products);
     }
 
     /**
